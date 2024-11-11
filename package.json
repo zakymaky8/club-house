@@ -1,0 +1,12 @@
+{
+  "name": "club-house",
+  "version": "1.0.0",
+  "description": "Exclusive clubhouse where members can write anonymous posts built using express, passport-js and session libraries. ## Tech stack used - Node js - javascript runtime environment - Express js - unopinionated framework for building server applications - Passport js - for authentication",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "zekaryas",
+  "license": "zekaryas"
+}
