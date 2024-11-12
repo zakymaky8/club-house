@@ -3,4 +3,4 @@ Exclusive clubhouse where members can write anonymous posts built using express,
 ## Tech stack used
 - Node js - javascript runtime environment
 - Express js - unopinionated framework for building server applications
-- Passport js - for authentication
+- Passport js - for authentication in three ways
