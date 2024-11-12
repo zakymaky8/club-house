@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/assets/styles/index.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            min-height: 80vh;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            background: #000;
+            color: blue;
+            padding: 8px;
+        }
+        input {
+            height: 32px;
+            padding: 10px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            font-style: italic
+        }
+    </style>
+</head>
+<body>
+    <form action="/join_club" method="POST">
+        <h1>Join the club!</h1>
+        <% if (locals.failureMsg) { %>
+            <span class="error"><%= failureMsg  %></span>
+        <%} %>
+        <div>
+            <label for="passcode">It is only a passcode long cost, enter and join. </label>
+            <input type="text"  name="passcode" id="passcode">
+        </div>
+        <button type="submit">Send</button>
+    </form>
+    <button><a href="/messages">go back</a></button>
+</body>
+</html>

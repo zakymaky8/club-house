@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0e0f10;
+    color: rgb(93, 250, 250);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    gap: 30px;
+}
+
+body > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    gap: 25px;
+}
+.messages {
+    display: flex;
+}
+
+.logs-regs {
+    display: flex;
+    gap: 10px;
+}
+.logs-regs button {
+    padding: 7px;
+    font-size: 100%;
+    background: #000;
+}
+
+.logs-regs a {
+    color: blue;
+    text-decoration: none;
+}
+
+/* footer {
+    margin-bottom: -100px;
+} */

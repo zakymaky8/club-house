@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/assets/styles/index.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            min-height: 80vh;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            background: #000;
+            color: blue;
+            padding: 8px;
+        }
+        input {
+            height: 32px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="/create_msg" method="POST">
+        <h1>New Message</h1>
+        <div>
+            <label for="title">Message Title: </label>
+            <input type="text"  name="msg_title" id="title">
+        </div>
+        <div>
+            <label for="msg-text">Text: </label>
+            <textarea rows="7" cols="25" name="msg_text" id="msg-text"></textarea>
+        </div>
+        <button type="submit">Create</button>
+    </form>
+</body>
+</html>
