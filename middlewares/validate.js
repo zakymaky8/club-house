@@ -1,4 +1,5 @@
 const { body } = require("express-validator");
+const pool = require("../config/pool");
 
 const validateRegistration = [
     body("first_name")
