@@ -1,8 +1,9 @@
-const { body, validationResult } = require("express-validator");
+const { validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const User = require("../models/UserModels");
 const Message = require('../models/MessageModels');
 const pool = require("../config/pool");
+const { validateRegistration } = require("../middlewares/validate")
 
 
 const getHomePage = (req, res) => {
@@ -45,46 +46,6 @@ const logUserOut = (req, res) => {
     res.redirect('/')
 }
 
-const validateRegistration = [
-    body("first_name")
-        .customSanitizer( value => value[0].toUpperCase() + value.slice(1, ).toLowerCase())
-        .escape(),
-
-    body("last_name")
-        .customSanitizer( value => value[0].toUpperCase() + value.slice(1, ).toLowerCase())
-        .escape(),
-
-    body("username")
-        .trim()
-        .isLength({min: 3, max: 10}).withMessage("Username should be between 3 and 10 characters inclusively!")
-        .escape(),
-    body("username")
-        .custom(async value => {
-            const { rows } = await pool.query(`SELECT * FROM users WHERE username = $1`, [value]);
-            const user = rows[0];
-            if (user) {
-                throw new Error("Username has already been taken before!")
-            } else {
-                return true;
-            }
-        }),
-    body("password")
-        .isLength({min: 6}).withMessage("Password should be minimum of 6 characters!")
-        .matches(/[a-z]/).withMessage("password should contain atleast one lowercase character!")
-        .matches(/[A-Z]/).withMessage("password should contain atleast one uppercase character!")
-        .matches(/[0-9]/).withMessage("password should contain atleast one number!")
-        .matches(/[^0-9a-zA-Z]/).withMessage("password should contain atleast one special character!"),
-
-    body("confirm_password")
-        .custom(async (value, { req }) => {
-            if (value !== req.body.password) {
-                throw new Error("Password didn't match!")
-            }
-            else {
-                return true;
-            }
-        })
-]
 
 const postRegistrationData = [validateRegistration, async function (req, res, next)  {
     const errors = validationResult(req);
