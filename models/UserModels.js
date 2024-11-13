@@ -10,7 +10,11 @@ module.exports = {
     },
 
     editUser: async (user) => {
-        await pool.query(`UPDATE users SET membership_status = 'member' WHERE users.users_id = $1`, [ user.users_id])
+        if (user.membership_status === "not member") {
+            await pool.query(`UPDATE users SET membership_status = 'member' WHERE users.users_id = $1`, [ user.users_id])
+        } else if (user.membership_status === "member") {
+            await pool.query(`UPDATE users SET membership_status = 'not member' WHERE users.users_id = $1`, [ user.users_id])
+        }
     },
 
     createUser: async (fname, lname, uname, pwd, isAdmin) => {
