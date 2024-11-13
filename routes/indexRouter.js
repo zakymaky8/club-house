@@ -1,5 +1,18 @@
 const { Router } = require("express");
-const { getHomePage, getSignUpPage, getLoginPage, postRegistrationData, getMessages, getCreateMessageForm, logUserOut, getJoinForm, changeMembershipStatus, deleteMessageAsAdmin, createNewMessage } = require("../controllers/indexController");
+const {
+    getHomePage,
+    getSignUpPage,
+    getLoginPage,
+    postRegistrationData,
+    getMessages,
+    getCreateMessageForm,
+    logUserOut,
+    getJoinForm,
+    deleteMessageAsAdmin,
+    createNewMessage,
+    changeMembershipStatusToMember,
+    changeMembershipStatusToNotMember } = require("../controllers/indexController");
+
 const passport = require("../auth/passport");
 const flash = require("connect-flash");
 const session = require("express-session");
@@ -50,7 +63,9 @@ indexRouter.get("/log_out", logUserOut)
 
 indexRouter.get("/join_club", isLogged, getJoinForm)
 
-indexRouter.post("/join_club", isLogged, changeMembershipStatus)
+indexRouter.post("/join_club", isLogged, changeMembershipStatusToMember)
+
+indexRouter.get("/leave_club", isLogged, changeMembershipStatusToNotMember)
 
 indexRouter.post("/delete_msg/:msg_id", isLogged, deleteMessageAsAdmin)
 
