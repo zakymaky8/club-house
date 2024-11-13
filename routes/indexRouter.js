@@ -41,6 +41,7 @@ indexRouter.post("/login",
                     failureMessage: "Incorrect username or password!"
                 }
             ));
+            
 indexRouter.get("/messages", isLogged, getMessages)
 
 indexRouter.get("/new_message", isLogged, getCreateMessageForm)

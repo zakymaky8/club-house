@@ -57,7 +57,7 @@
             <input type="text" name="username" id="uname" required placeholder="username"  value="<%= (locals.fieldValues && fieldValues.username) ? fieldValues.username: "" %>">
         </div>
         <% if (locals.errors && errors.find(error => error.path==="username")) { %>
-            <span class="error"><%= errors.find(error => error.path=="username").msg %></span>
+            <span class="error">* <%= errors.find(error => error.path=="username").msg %></span>
         <%}  %>
         <div>
             <label for="pwd">Set Your Password: </label>
@@ -66,7 +66,7 @@
         <% if (locals.errors && errors.find(error => error.path==="password")) { %>
             <div>
                 <% errors.filter(error => error.path=="password").map(error => { %>
-                    <span class="error"><%= error.msg %></span><br>
+                    <span class="error">* <%= error.msg %></span><br>
                 <% }) %>
             </div>
             
@@ -76,7 +76,7 @@
             <input type="password" name="confirm_password" id="cpwd" required placeholder="confirm password">
         </div>
         <% if (locals.errors && errors.find(error => error.path==="confirm_password")) { %>
-            <span class="error"><%= errors.find(error => error.path=="confirm_password").msg %></span>
+            <span class="error">* <%= errors.find(error => error.path=="confirm_password").msg %></span>
         <%}  %>
         <label for="admincb"><input type="checkbox" name="isAdmin" id="admincb">Confirm you are admin!</label>
         <button type="submit">Register</button>

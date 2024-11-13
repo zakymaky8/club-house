@@ -7,7 +7,7 @@ module.exports = {
     },
 
     getMessage: async()  => {
-        
+
     },
 
     editMessage: async()  => {
@@ -15,13 +15,12 @@ module.exports = {
     },
 
     createMessage: async (user, entries)  => {
-        // const { rows } = await pool.query(`SELECT users_id FROM users WHERE users_id = $1`, [user.id]);
         await pool.query(`INSERT INTO messages (title, timestamp, msg_text, user_id)
                           VALUES ($1, NOW(), $2, $3)`, [entries.msg_title, entries.msg_text, user.users_id])
     },
 
     deleteMessages: async()  => {
-        
+
     },
 
     deleteMessage: async(msg_id) => {

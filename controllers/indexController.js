@@ -115,7 +115,7 @@ const getMessages = async (req, res, next) => {
     }
 }
 
-const deleteMessageAsAdmin = async (req, res) => { // CHECK THIS LATER AFTER CREATING SOME OTHER MESSAGES
+const deleteMessageAsAdmin = async (req, res) => {
     const { msg_id } = req.params;
     console.log(msg_id);
     await Message.deleteMessage(Number(msg_id));
