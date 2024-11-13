@@ -43,6 +43,9 @@
             text-decoration: none;
             height: 32px;
             font-size: 100%;
+            border-radius: 9px;
+            margin: 10px;
+            color: blue;
         }
     </style>
 </head>
@@ -52,8 +55,10 @@
         <button><a href="/new_message">Create New Message</a></button>
         <% if (user.membership_status === "not member") { %>
             <button><a href="/join_club">Join the club</a></button>
+        <% } else if (user.membership_status === "member") { %>
+            <button><a href="/leave_club">Leave the club</a></button>
         <% } %>
-        <button><a href="/log_out">Log out</a></button>
+        <button><a style="color: brown;" href="/log_out">Log out</a></button>
     </div>
     <div class="messages">
         <% if (messages.length) { %>
