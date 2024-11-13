@@ -27,7 +27,7 @@ const getJoinForm = (req, res) => {
     res.render("join_prompt", {title: "Join the Club"})
 }
 
-const changeMembershipStatus = async (req, res) =>  {
+const changeMembershipStatusToMember = async (req, res) =>  {
     const { passcode } = req.body;
     console.log(passcode);
     if (passcode === "zekyhero") {
@@ -37,6 +37,12 @@ const changeMembershipStatus = async (req, res) =>  {
     } else {
         res.render("join_prompt", { failureMsg: "Incorrect passcode!" })
     }
+}
+
+const changeMembershipStatusToNotMember = async (req, res) => {
+    console.log(req.user);
+    await User.editUser(req.user);
+    res.redirect("/messages");
 }
 
 const logUserOut = (req, res) => {
@@ -100,7 +106,8 @@ module.exports = {
                    getCreateMessageForm,
                    logUserOut,
                    getJoinForm,
-                   changeMembershipStatus,
+                   changeMembershipStatusToMember,
                    deleteMessageAsAdmin,
-                   createNewMessage
+                   createNewMessage,
+                   changeMembershipStatusToNotMember
             }
